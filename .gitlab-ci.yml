@@ -1,7 +1,12 @@
 variables:
         IMAGE_NAME: nicoleketch/demo-gitlab-cicd
         IMAGE_TAG: python-app-1.0
+stages:
+    - test
+    - build
+
 run_tests:
+    stage: test
     image: python:3.9-slim-buster
     before_script:
         - apt-get -yqq update && apt-get install -yqq git && apt-get install -yqq make
@@ -9,6 +14,7 @@ run_tests:
     script: 
         - make test
 build_image:
+    stage: build
     image: docker:25.0.3
     services:
         - docker:25.0.3-dind
