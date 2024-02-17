@@ -32,7 +32,7 @@ deploy:
     before_script:
         - chmod 400 $SSH_KEY
     script:
-        - ssh -o StrictHostKeyChecking=no -i $SSH_KEY root@44.203.87.79 "
+        - ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@44.203.87.79 "
             docker run -d -p 5000:500 $IMAGE_NAME:$IMAGE_TAG &&
             docker ps -aq | xargs docker stop &&
             docker login -u $REGISTRY_USER -p $REGISTRY_PW"
