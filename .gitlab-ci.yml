@@ -5,3 +5,12 @@ run_tests:
         - pip install -r src/requirements.txt
     script: 
         - make test
+build_image:
+    variables:
+        IMAGE_NAME: nicoleketch/demo-gitlab-cicd
+        IMAGE_TAG: python-app-1.0
+    before_script:
+        - docker login -u $REGISTRY_USER -p $REGISTRY_PW
+    script:
+        - docker build -t $IMAGE_NAME:$IMAGE_TAG . 
+        - docker push nicoleketch/demo-gitlab-cicd:python-app-1.0
