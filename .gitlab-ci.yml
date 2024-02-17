@@ -13,4 +13,4 @@ build_image:
         - docker login -u $REGISTRY_USER -p $REGISTRY_PW
     script:
         - docker build -t $IMAGE_NAME:$IMAGE_TAG . 
-        - docker push nicoleketch/demo-gitlab-cicd:python-app-1.0
+        - docker push $IMAGE_NAME:$IMAGE_TAG
