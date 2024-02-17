@@ -2,6 +2,6 @@ run_tests:
     image: python:3.9-slim-buster
     before_script:
         - apt-get -yqq update && apt-get install -yqq git && apt-get install -yqq make
-        - pip install -r requirements.txt
+        - pip install -r src/requirements.txt
     script: 
         - make test
